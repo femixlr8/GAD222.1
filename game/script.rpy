@@ -1,5 +1,6 @@
 ﻿# Declare the game
 define joelle = Character("Joelle", color="#ffcc99")
+define mrs_peterson = Character("Mrs. Peterson", color="#cc99ff") # Added Mrs. Peterson
 
 # Start the game
 label start:
@@ -10,16 +11,14 @@ label start:
     # Scene: Black screen with ambient sound
     scene black with fade
     
-    
     # Opening Text
     show text "There’s nothing like a fresh start. That’s what I told myself." with fade
     pause 2.0
     hide text with fade
 
     # Scene: Joelle arrives at Logan Ridge
-    scene suburban_street at dusk with slow_dissolve
-    show car at driveway with moveinright
-    play sound "car_engine_off.ogg"
+    scene suburban_street_dusk with slow_dissolve # FIXED scene name
+    play sound "audio/car_engine_off.ogg" # FIXED: Added "audio/" and correct filename format
 
     joelle "Logan Ridge. Quaint, quiet, affordable. Perfect for starting over."
 
