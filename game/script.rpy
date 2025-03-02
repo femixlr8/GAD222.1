@@ -1,33 +1,61 @@
-﻿# The script of the game goes in this file.
+﻿# Declare the game
+define joelle = Character("Joelle", color="#ffcc99")
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define e = Character("Eileen")
-
-
-# The game starts here.
-
+# Start the game
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+    # Play ambient hum in a loop
+    play audio "audio/ambient_hum.ogg" loop 
 
-    scene bg room
+    # Scene: Black screen with ambient sound
+    scene black with fade
+    
+    
+    # Opening Text
+    show text "There’s nothing like a fresh start. That’s what I told myself." with fade
+    pause 2.0
+    hide text with fade
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    # Scene: Joelle arrives at Logan Ridge
+    scene suburban_street at dusk with slow_dissolve
+    show car at driveway with moveinright
+    play sound "car_engine_off.ogg"
 
-    show eileen happy
+    joelle "Logan Ridge. Quaint, quiet, affordable. Perfect for starting over."
 
-    # These display lines of dialogue.
+    joelle "Perfect for forgetting."
 
-    e "You've created a new Ren'Py game."
+    # Scene: Joelle steps out of her car
+    scene joelle_standing with fade
+    joelle "A fresh start. A quiet town. That’s all I need."
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    # Scene: Joelle’s House
+    scene joelle_house with slow_dissolve
+    joelle "Alright, home sweet home. Time to settle in."
 
-    # This ends the game.
+    # Gameplay starts (Exploring the house)
+    menu:
+        "Look at the photo of Matt":
+            joelle "Matt... you’d hate this town. Too clean, too perfect."
+        "Unpack moving boxes":
+            joelle "So much stuff..."
 
+    # Scene: Mrs. Peterson arrives
+    scene joelle_house_door with dissolve
+    show mrs_peterson with fade
+    mrs_peterson "You’re going to love being here. So many great people, especially Ronnie haha."
+
+    menu:
+        "Thanks, I'm sure I will.":
+            mrs_peterson "Everyone loves Ronnie. He’s quite the charming man."
+        "I'm just settling in.":
+            mrs_peterson "Oh, take your time! But you'll meet Ronnie soon enough."
+        "I'm not really into making new friends.":
+            mrs_peterson "Oh... well, I hope Logan Ridge still feels like home for you."
+
+    # Scene: Nighttime
+    scene joelle_house_night with fade
+    joelle "New places are always weird at first. Empty spaces, unfamiliar sounds…"
+
+    # End of prototype
     return
