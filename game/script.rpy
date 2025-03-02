@@ -1,6 +1,18 @@
 ﻿# Declare the game
 define joelle = Character("Joelle", color="#ffcc99")
-define mrs_peterson = Character("Mrs. Peterson", color="#cc99ff") # Added Mrs. Peterson
+define mrs_peterson = Character("Mrs. Peterson", color="#cc99ff")
+
+# Declare Backgrounds
+image black = "#000000" # Simple black screen
+image suburban_street_dusk = "images/suburban_street_dusk.png"
+image joelle_house = "images/joelle_house.png"
+image joelle_bedroom = "images/joelle_bedroom.png"
+image joelle_backyard = "images/joelle_backyard.png"
+image joelle_house_night = "images/joelle_house_night.png"
+
+# Declare Character Sprites
+image joelle = "images/characters/joelle.png"
+image mrs_peterson = "images/characters/mrs_peterson.png"
 
 # Start the game
 label start:
@@ -17,22 +29,23 @@ label start:
     hide text with fade
 
     # Scene: Joelle arrives at Logan Ridge
-    scene suburban_street_dusk with slow_dissolve # FIXED scene name
-    play sound "audio/car_engine_off.ogg" # FIXED: Added "audio/" and correct filename format
+    scene suburban_street_dusk with dissolve
+    play sound "audio/car_engine_off.ogg" 
 
     joelle "Logan Ridge. Quaint, quiet, affordable. Perfect for starting over."
 
     joelle "Perfect for forgetting."
 
     # Scene: Joelle steps out of her car
-    scene joelle_standing with fade
+    scene joelle_house with fade
     joelle "A fresh start. A quiet town. That’s all I need."
 
     # Scene: Joelle’s House
-    scene joelle_house with slow_dissolve
+    scene joelle_house with dissolve
     joelle "Alright, home sweet home. Time to settle in."
 
     # Gameplay starts (Exploring the house)
+    scene joelle_bedroom with dissolve
     menu:
         "Look at the photo of Matt":
             joelle "Matt... you’d hate this town. Too clean, too perfect."
@@ -40,7 +53,7 @@ label start:
             joelle "So much stuff..."
 
     # Scene: Mrs. Peterson arrives
-    scene joelle_house_door with dissolve
+    scene joelle_backyard with dissolve
     show mrs_peterson with fade
     mrs_peterson "You’re going to love being here. So many great people, especially Ronnie haha."
 
